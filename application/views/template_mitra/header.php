@@ -74,9 +74,9 @@
 					</a>
 					<div id="Pengajuan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 						<div class="bg-white py-2 collapse-inner rounded">
-							<a class="collapse-item" href="<?= base_url('admin/data_lowongan') ?>">Lowongan Aktif</a>
-							<a class="collapse-item" href="<?= base_url('admin/lowongan_lama') ?>">Lowongan Habis</a>
-							<a class="collapse-item" href="<?= base_url('admin/pengajuan_kerja') ?>">Pengajuan Kerja</a>
+							<a class="collapse-item" href="<?= base_url('mitra/data_lowongan') ?>">Lowongan Aktif</a>
+							<a class="collapse-item" href="<?= base_url('mitra/lowongan_lama') ?>">Lowongan Habis</a>
+							<a class="collapse-item" href="<?= base_url('mitra/pengajuan_kerja') ?>">Pengajuan Kerja</a>
 						</div>
 					</div>
 				</li>

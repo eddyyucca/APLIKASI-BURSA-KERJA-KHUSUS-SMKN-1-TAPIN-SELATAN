@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2022 at 07:59 PM
+-- Generation Time: Jul 01, 2022 at 08:17 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -130,7 +130,7 @@ CREATE TABLE `lowongan` (
   `nama_lowongan` varchar(100) NOT NULL,
   `isi_lowongan` text NOT NULL,
   `batas_tanggal` varchar(20) NOT NULL,
-  `id_mitra` varchar(100) NOT NULL,
+  `mitra` varchar(100) NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,7 +138,7 @@ CREATE TABLE `lowongan` (
 -- Dumping data for table `lowongan`
 --
 
-INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `isi_lowongan`, `batas_tanggal`, `id_mitra`, `foto`) VALUES
+INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `isi_lowongan`, `batas_tanggal`, `mitra`, `foto`) VALUES
 (4, 'sasa', 'sa', '2022-01-15', 'a', ''),
 (6, 'sasa', 'aaaa', '2022-01-31', 'aaaaa', ''),
 (8, '123', 'sakksakslj', '2022-01-28', '123', ''),

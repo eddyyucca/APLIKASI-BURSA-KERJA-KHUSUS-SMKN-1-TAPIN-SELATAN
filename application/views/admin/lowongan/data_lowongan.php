@@ -39,7 +39,7 @@
 								<tr>
 									<td><?= $nomor++; ?></td>
 									<td><?= $x->nama_lowongan; ?></td>
-									<td><?= $x->id_mitra; ?></td>
+									<td><?= $x->nama_mitra; ?></td>
 									<td><?= $x->batas_tanggal; ?></td>
 									<td> <img class="shadow" <?php
 																if ($x->foto == false) { ?> src="<?= base_url('assets/images/kosong.webp') ?>" <?php

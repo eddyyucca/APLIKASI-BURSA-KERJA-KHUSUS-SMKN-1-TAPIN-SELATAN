@@ -7,14 +7,7 @@
 		<div class="card-body">
 			<div class="table-responsive">
 				<div class="container">
-					<form action="<?= base_url('admin/cari_tahun_lulus')  ?>" method="POST" enctype="multipart/form-data">
-						<input type="number" name="tahun_lulus" class="form-control" required placeholder="Tahun Lulus">
-						<button class="btn btn-primary mt-3">Cari</button>
-					</form>
-					<hr>
-					<!-- <a href="<?= base_url('admin/tambah_alumni_baru') ?>" class="btn btn-primary">Tambah Alumni Baru</a> -->
-					<a href="<?= base_url('admin/cetak_alumni') ?>" class="btn btn-primary">Cetak Data Alumni</a>
-					<hr>
+
 				</div>
 				<?php if ($lapor == "gagal") { ?>
 					<div class="alert alert-danger" role="alert">
@@ -48,11 +41,8 @@
 								<td><?= $x->tahun_lulus; ?></td>
 								<td><?= $x->pendidikan_t; ?></td>
 								<td align="center">
-									<?php if ($x->status_akun == 0) { ?>
-										<a href="<?= base_url('admin/aktifkan_akun/') . $x->telpon; ?>" class="btn btn-primary">Aktifkan</a> <?php } ?>
-									<a href="<?= base_url('admin/delete_alumni/') . $x->telpon; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-									<a href="<?= base_url('admin/edit_alumni/') . $x->telpon; ?>" class="btn btn-primary">Edit</a>
 									<a href="<?= base_url('admin/view_alumni/') . $x->telpon; ?>" class="btn btn-primary">View</a>
+									<a href="<?= base_url('admin/terima_permintaan/') . $x->telpon; ?>" class="btn btn-success">Terima</a>
 								</td>
 							</tr>
 						<?php } ?>

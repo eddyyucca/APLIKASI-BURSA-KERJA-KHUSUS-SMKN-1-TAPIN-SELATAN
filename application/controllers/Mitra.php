@@ -223,7 +223,7 @@ class Mitra extends CI_Controller
 			$x = $this->upload->data();
 			$data = array(
 				'nama_lowongan' => $this->input->post('nama_lowongan'),
-				'id_mitra' => $this->session->userdata('id_mitra'),
+				'mitra' => $this->session->userdata('id_mitra'),
 				'batas_tanggal' => $this->input->post('batas_tanggal'),
 				'isi_lowongan' => $this->input->post('isi_lowongan'),
 				'foto' => $x["orig_name"],
