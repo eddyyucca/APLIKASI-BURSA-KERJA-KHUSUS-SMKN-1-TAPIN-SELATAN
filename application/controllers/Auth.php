@@ -210,7 +210,7 @@ class Auth extends CI_Controller
 				'telpon' => $this->input->post('telpon'),
 				'password' => md5($password),
 				'level' => "user",
-				'status' => "aktif",
+				'status' => "off",
 			);
 
 			$this->db->insert('alumni', $data);
