@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 01, 2022 at 08:17 PM
+-- Generation Time: Jul 16, 2022 at 10:59 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -40,12 +40,13 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`id_akun`, `telpon`, `password`, `level`, `status`) VALUES
-(22, '081250653005', '4297f44b13955235245b2497399d7a93', 'user', 'aktif'),
 (23, '081266666666', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'aktif'),
 (25, '081250653002', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif'),
 (27, '081250653000', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif'),
 (28, '121212121212', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif'),
-(29, '444444444', 'e10adc3949ba59abbe56e057f20f883e', 'mitra', 'aktif');
+(29, '444444444', 'e10adc3949ba59abbe56e057f20f883e', 'mitra', 'aktif'),
+(30, '085155125592', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif'),
+(31, '081250653005', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -75,11 +76,12 @@ CREATE TABLE `alumni` (
 --
 
 INSERT INTO `alumni` (`id_alumni`, `nama_alumni`, `jurusan_smk`, `pendidikan_t`, `tgl_lahir`, `alamat`, `telpon`, `agama`, `foto_profil`, `email`, `tentang_saya`, `data_pdf`, `status_akun`, `tahun_lulus`) VALUES
-(5, 'eddy adha saputra', '2', 'as', '2022-01-12', 'Banjar Baru Selatan', '081250653005', 'Islam', 'aku.jpg', 'eddyyucca@gmail.com', 'tes ini aku\r\n', '2111NA77961.pdf', '1', '2019'),
 (6, 'ahmad amin badawi', '2', 'SMK', '2022-01-12', 'TAPIN', '081266666666', 'Islam', '5f4df47203808.jpg', 'aminbadawi@gmail.com', '', '', '1', '2020'),
 (8, 'eddy adha saputra', '2', 'as', '2021-12-31', 'Banjar Baru Selatan', '081250653002', 'Islam', 'Snapchat-897986893.jpg', 'eddyyucca2@gmail.com', '', '', '1', '2021'),
 (10, 'amin 2', '2', 'SMK', '2022-02-05', 'Banjar Baru Selatan', '081250653000', 'Islam', '', 'eddyyucca123@gmail.com', '', '', '1', '2020'),
-(11, 'yenta', '2', 's1', '2000-06-28', 'tapin', '121212121212', 'Islam', '', 'eddy@gmail.com', '', '', '1', '2019');
+(11, 'yenta', '2', 's1', '2000-06-28', 'tapin', '121212121212', 'Islam', '', 'eddy@gmail.com', '', '', '1', '2019'),
+(12, 'dawn', '2', 's1', '2022-07-13', 'sa', '085155125592', 'Islam', '', 'e@s.com', '', '', '0', '2020'),
+(13, 'a', '2', 'a', '2022-07-22', 'a', '081250653005', 'Kristen', '', 'a@a.c', '', '', '0', '11111');
 
 -- --------------------------------------------------------
 
@@ -131,22 +133,30 @@ CREATE TABLE `lowongan` (
   `isi_lowongan` text NOT NULL,
   `batas_tanggal` varchar(20) NOT NULL,
   `mitra` varchar(100) NOT NULL,
-  `foto` text NOT NULL
+  `foto` text NOT NULL,
+  `pml` varchar(255) NOT NULL,
+  `pmp` varchar(255) NOT NULL,
+  `jlp` varchar(255) NOT NULL,
+  `jll` varchar(255) NOT NULL,
+  `uml` varchar(255) NOT NULL,
+  `ump` varchar(255) NOT NULL,
+  `date_mulai` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lowongan`
 --
 
-INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `isi_lowongan`, `batas_tanggal`, `mitra`, `foto`) VALUES
-(4, 'sasa', 'sa', '2022-01-15', 'a', ''),
-(6, 'sasa', 'aaaa', '2022-01-31', 'aaaaa', ''),
-(8, '123', 'sakksakslj', '2022-01-28', '123', ''),
-(9, 'qqqqqqqqq', 'qqqq ', '2022-01-29', 'qqqqq', 'bri-logo.png'),
-(10, 'assas', 'as ', '2022-02-02', 'sasasas', 'wallpaperbetter_com_1280x1024_(2).jpg'),
-(11, 'sas', 'sasa', '2022-02-12', 'sas', ''),
-(12, 'tes', 'salsa', '2022-06-30', '3', ''),
-(13, 'admin', 'sasaa', '2022-07-01', '3', '');
+INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `isi_lowongan`, `batas_tanggal`, `mitra`, `foto`, `pml`, `pmp`, `jlp`, `jll`, `uml`, `ump`, `date_mulai`) VALUES
+(4, 'sasa', 'sa', '2022-01-15', 'a', '', '', '', '', '', '', '', ''),
+(6, 'sasa', 'aaaa', '2022-01-31', 'aaaaa', '', '', '', '', '', '', '', ''),
+(8, '123', 'sakksakslj', '2022-01-28', '123', '', '', '', '', '', '', '', ''),
+(9, 'qqqqqqqqq', 'qqqq ', '2022-01-29', 'qqqqq', 'bri-logo.png', '', '', '', '', '', '', ''),
+(10, 'assas', 'as ', '2022-02-02', 'sasasas', 'wallpaperbetter_com_1280x1024_(2).jpg', '', '', '', '', '', '', ''),
+(11, 'sas', 'sasa', '2022-02-12', 'sas', '', '', '', '', '', '', '', ''),
+(12, 'tes', 'salsa', '2022-06-30', '3', '', '', '', '', '', '', '', ''),
+(13, 'admin', 'sasaa', '2022-07-01', '3', '', '', '', '', '', '', '', ''),
+(14, 'sa', 'ok', '2022-07-31', '3', '', 's1', 'sma', '1', '1', '20', '20', '2022-07-18');
 
 -- --------------------------------------------------------
 
@@ -218,13 +228,13 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT for table `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
-  MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `jurusan`
@@ -242,7 +252,7 @@ ALTER TABLE `lamaran`
 -- AUTO_INCREMENT for table `lowongan`
 --
 ALTER TABLE `lowongan`
-  MODIFY `id_lowongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_lowongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `mitra`

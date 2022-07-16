@@ -226,6 +226,13 @@ class Mitra extends CI_Controller
 				'mitra' => $this->session->userdata('id_mitra'),
 				'batas_tanggal' => $this->input->post('batas_tanggal'),
 				'isi_lowongan' => $this->input->post('isi_lowongan'),
+				'pml' => $this->input->post('pml'),
+				'pmp' => $this->input->post('pmp'),
+				'uml' => $this->input->post('uml'),
+				'ump' => $this->input->post('ump'),
+				'jlp' => $this->input->post('jlp'),
+				'jll' => $this->input->post('jll'),
+				'date_mulai' => $this->input->post('date_mulai'),
 				'foto' => $x["orig_name"],
 			);
 

@@ -43,7 +43,13 @@ class Lowongan_m extends CI_Model
 	public function get_row_lowongan($id_lowongan)
 	{
 		$this->db->where('id_lowongan', $id_lowongan);
+		$this->db->from('lowongan');
+		$this->db->join('mitra', 'mitra.id_mitra = lowongan.mitra');
+		// $this->db->where('batas_tanggal >=', $date);
+		// $this->db->where('batas_tanggal <=', $date2);
 
-		return  $this->db->get('lowongan')->row();
+		$this->db->order_by('id_lowongan', 'DESC');
+		// return  $this->db->get()->result();
+		return  $this->db->get()->row();
 	}
 }/* End of file Lowongan_m.php */
