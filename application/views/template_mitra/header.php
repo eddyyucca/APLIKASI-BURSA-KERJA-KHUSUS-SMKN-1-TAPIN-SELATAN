@@ -36,9 +36,9 @@
 			<!-- Sidebar -->
 			<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 				<!-- Sidebar - Brand -->
-				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
+				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('mitra') ?>">
 					<div class="sidebar-brand-icon">
-						<img src="<?= base_url('assets/logo.png'); ?>" width="50" height="60" alt="Logo Pemda-Tapin">
+						<img src="<?= base_url('assets/logo.png'); ?>" width="50" height="60" alt="bkk">
 					</div>
 					<div class="sidebar-brand-text mx-3">BKK SMK</div>
 				</a>

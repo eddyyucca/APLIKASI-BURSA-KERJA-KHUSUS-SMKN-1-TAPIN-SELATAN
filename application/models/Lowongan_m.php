@@ -22,12 +22,12 @@ class Lowongan_m extends CI_Model
 
 		$this->db->where('id_mitra', $id_mitra);
 
-		$date = ('Y-m-d');
+		$date = ('2022-12-01');
 		$date2 = '2022-02-01';
 		$this->db->select('*');
 		$this->db->from('lowongan');
-		// $this->db->where('batas_tanggal >=', $date);
-		// $this->db->where('batas_tanggal <=', $date2);
+		$this->db->where('batas_tanggal >=', $date2);
+		$this->db->where('batas_tanggal <=', $date);
 		$this->db->join('mitra', 'mitra.id_mitra = lowongan.mitra');
 		// $this->db->join('lowongan', 'lowongan.id_lowongan = lamaran.id_lowongan');
 		$this->db->order_by('id_lowongan', 'DESC');

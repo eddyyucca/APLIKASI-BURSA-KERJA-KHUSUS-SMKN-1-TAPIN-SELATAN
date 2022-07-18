@@ -55,7 +55,7 @@
 						<tr>
 							<td>Foto</td>
 							<td>
-								<input type="file" name="foto" class="" accept="image/*">
+								<input type="file" name="foto_low" class="" accept="image/*">
 							</td>
 						</tr>
 						<tr>

@@ -22,7 +22,7 @@ class Mitra extends CI_Controller
 
 	public function index()
 	{
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = false;
 		$data['judul'] = 'Dashboard';
 		$data['jumlah_alumni'] = $this->alumni_m->jumlah_alumni();
@@ -55,7 +55,7 @@ class Mitra extends CI_Controller
 	public function jurusan()
 	{
 		$data['judul'] = 'Data jurusan';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->jurusan_m->get_all_jurusan();
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/jurusan/data_jurusan', $data);
@@ -64,7 +64,7 @@ class Mitra extends CI_Controller
 	public function tambah_jurusan()
 	{
 		$data['judul'] = 'Data jurusan';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/jurusan/input_jurusan', $data);
 		$this->load->view('template_mitra/footer');
@@ -72,7 +72,7 @@ class Mitra extends CI_Controller
 	public function edit_jurusan($id_jurusan)
 	{
 		$data['judul'] = 'Data jurusan';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->jurusan_m->get_row_jurusan($id_jurusan);
 
 		$this->load->view('template_mitra/header', $data);
@@ -82,7 +82,7 @@ class Mitra extends CI_Controller
 	public function edit_alumni($telpon)
 	{
 		$data['judul'] = 'Data jurusan';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->alumni_m->get_row_alumni($telpon);
 		$data['id_alumni'] = $this->input->post('id_alumni');
 
@@ -94,7 +94,7 @@ class Mitra extends CI_Controller
 	public function kode_lowongan($id_lowongan)
 	{
 		$data['judul'] = 'Data jurusan';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->lowongan_m->get_row_lowongan($id_lowongan);
 
 		$this->load->view('template_mitra/header', $data);
@@ -117,7 +117,7 @@ class Mitra extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$data['data'] = $this->jurusan_m->get_row_jurusan($id_jurusan);
 			$data['judul'] = 'Data jurusan';
-			$data['nama'] = $this->session->userdata('nama_alumni');
+			$data['nama'] = $this->session->userdata('nama_mitra');
 			$this->load->view('template_mitra/header', $data);
 			$this->load->view('admin/jurusan/edit_jurusan', $data);
 			$this->load->view('template_mitra/footer');
@@ -136,7 +136,7 @@ class Mitra extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 
 			$data['judul'] = 'Data jurusan';
-			$data['nama'] = $this->session->userdata('nama_alumni');
+			$data['nama'] = $this->session->userdata('nama_mitra');
 			$this->load->view('template_mitra/header', $data);
 			$this->load->view('admin/jurusan/input_jurusan', $data);
 			$this->load->view('template_mitra/footer');
@@ -178,7 +178,7 @@ class Mitra extends CI_Controller
 	public function buat_lowongan_baru()
 	{
 		$data['judul'] = 'Data Pegawai';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $data['data'] = $this->pegawai_m->get_all_pegawai();
 
 		$this->load->view('template_mitra/header', $data);
@@ -188,7 +188,7 @@ class Mitra extends CI_Controller
 	public function edit_lowongan($id_lowongan)
 	{
 		$data['judul'] = 'Data Pegawai';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->lowongan_m->get_row_lowongan($id_lowongan);
 
 		$this->load->view('template_mitra/header', $data);
@@ -203,7 +203,7 @@ class Mitra extends CI_Controller
 		$this->form_validation->set_rules('isi_lowongan', 'Isi Lowongan');
 		if ($this->form_validation->run() == FALSE) {
 			$data['judul'] = 'Lowongan Baru';
-			$data['nama'] = $this->session->userdata('nama_alumni');
+			$data['nama'] = $this->session->userdata('nama_mitra');
 			$data['jurusan'] = $this->jurusan_m->get_all_jurusan();
 
 			$this->load->view('template_mitra/header', $data);
@@ -219,25 +219,26 @@ class Mitra extends CI_Controller
 
 			$this->load->library('upload', $config);
 			// script upload file 1
-			$this->upload->do_upload('foto');
+			$this->upload->do_upload('foto_low');
 			$x = $this->upload->data();
-			$data = array(
-				'nama_lowongan' => $this->input->post('nama_lowongan'),
-				'mitra' => $this->session->userdata('id_mitra'),
-				'batas_tanggal' => $this->input->post('batas_tanggal'),
-				'isi_lowongan' => $this->input->post('isi_lowongan'),
-				'pml' => $this->input->post('pml'),
-				'pmp' => $this->input->post('pmp'),
-				'uml' => $this->input->post('uml'),
-				'ump' => $this->input->post('ump'),
-				'jlp' => $this->input->post('jlp'),
-				'jll' => $this->input->post('jll'),
-				'date_mulai' => $this->input->post('date_mulai'),
-				'foto' => $x["orig_name"],
-			);
+			var_dump($x["orig_name"]);
+			// $data = array(
+			// 	'nama_lowongan' => $this->input->post('nama_lowongan'),
+			// 	'mitra' => $this->session->userdata('id_mitra'),
+			// 	'batas_tanggal' => $this->input->post('batas_tanggal'),
+			// 	'isi_lowongan' => $this->input->post('isi_lowongan'),
+			// 	'pml' => $this->input->post('pml'),
+			// 	'pmp' => $this->input->post('pmp'),
+			// 	'uml' => $this->input->post('uml'),
+			// 	'ump' => $this->input->post('ump'),
+			// 	'jlp' => $this->input->post('jlp'),
+			// 	'jll' => $this->input->post('jll'),
+			// 	'date_mulai' => $this->input->post('date_mulai'),
+			// 	'foto' => $x["orig_name"],
+			// );
 
-			$this->db->insert('lowongan', $data);
-			return redirect('mitra/data_lowongan');
+			// $this->db->insert('lowongan', $data);
+			// return redirect('mitra/data_lowongan');
 		}
 	}
 	public function proses_update_lowongan($id_lowongan)
@@ -248,7 +249,7 @@ class Mitra extends CI_Controller
 		$this->form_validation->set_rules('isi_lowongan', 'Isi Lowongan');
 		if ($this->form_validation->run() == FALSE) {
 			$data['judul'] = 'Lowongan Baru';
-			$data['nama'] = $this->session->userdata('nama_alumni');
+			$data['nama'] = $this->session->userdata('nama_mitra');
 			$data['jurusan'] = $this->jurusan_m->get_all_jurusan();
 
 			$this->load->view('template_mitra/header', $data);
@@ -266,6 +267,7 @@ class Mitra extends CI_Controller
 			// script upload file 1
 			$this->upload->do_upload('foto');
 			$x = $this->upload->data();
+
 			$data = array(
 				'nama_lowongan' => $this->input->post('nama_lowongan'),
 				'nama_perusahaan' => $this->input->post('nama_perusahaan'),
@@ -302,7 +304,7 @@ class Mitra extends CI_Controller
 	public function lihat_lowongan($id_lowongan)
 	{
 		$data['judul'] = 'Data Lowongan';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->lowongan_m->get_row_lowongan($id_lowongan);
 
 		$this->load->view('template_mitra/header', $data);
@@ -332,7 +334,7 @@ class Mitra extends CI_Controller
 		$data['judul'] = 'Data Lowongan';
 		$id_mitra = $this->session->userdata('id_mitra');
 		$data['data'] = $this->lowongan_m->get_all_lowongan_mitra($id_mitra);
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/data_lowongan', $data);
 		$this->load->view('template_mitra/footer');
@@ -341,7 +343,7 @@ class Mitra extends CI_Controller
 	{
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->lowongan_m->get_all_lowongan();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/cetak/baru', $data);
 		// $this->load->view('template_mitra/footer');
@@ -353,7 +355,7 @@ class Mitra extends CI_Controller
 
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->lowongan_m->cari_tanggal($tgl1, $tgl2);
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/cetak/baru', $data);
 		// $this->load->view('template_mitra/footer');
@@ -362,7 +364,7 @@ class Mitra extends CI_Controller
 	{
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->lowongan_m->get_all_lowongan();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/lowongan_lama', $data);
 		$this->load->view('template_mitra/footer');
@@ -375,7 +377,7 @@ class Mitra extends CI_Controller
 
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->lowongan_m->get_all_lowongan();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/cetak/lama', $data);
 		// $this->load->view('template_mitra/footer');
@@ -388,7 +390,7 @@ class Mitra extends CI_Controller
 
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->lowongan_m->cari_tanggal($tgl1, $tgl2);
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/cetak/lama', $data);
 		// $this->load->view('template_mitra/footer');
@@ -397,7 +399,7 @@ class Mitra extends CI_Controller
 	{
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->alumni_m->get_pengajuan();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/pengajuan_kerja', $data);
 		$this->load->view('template_mitra/footer');
@@ -406,7 +408,7 @@ class Mitra extends CI_Controller
 	{
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->alumni_m->ditolak();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/pengajuan_kerja', $data);
 		$this->load->view('template_mitra/footer');
@@ -415,7 +417,7 @@ class Mitra extends CI_Controller
 	{
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->alumni_m->diterima();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/pengajuan_kerja', $data);
 		$this->load->view('template_mitra/footer');
@@ -424,7 +426,7 @@ class Mitra extends CI_Controller
 	{
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->alumni_m->get_pengajuan_ditolak();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/cetak/ditolak', $data);
 		// $this->load->view('template_mitra/footer');
@@ -433,7 +435,7 @@ class Mitra extends CI_Controller
 	{
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->alumni_m->get_pengajuan_diterima();
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/cetak/diterima', $data);
 		// $this->load->view('template_mitra/footer');
@@ -441,7 +443,7 @@ class Mitra extends CI_Controller
 	public function lihat_pelamar($telpon)
 	{
 		$data['judul'] = 'Alumni';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $telpon =  $this->session->userdata('telpon');
 		$data['data'] = $this->alumni_m->get_row_alumni($telpon);
 		$this->load->view('template_mitra/header', $data);
@@ -451,7 +453,7 @@ class Mitra extends CI_Controller
 	public function semua_pelamar_p($id_lowongan)
 	{
 		$data['judul'] = 'Alumni';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		// $telpon =  $this->session->userdata('telpon');
 		$data['data'] = $this->alumni_m->get_pengajuan_p($id_lowongan);
 		$data['id_lowongan'] = $id_lowongan;
@@ -473,7 +475,7 @@ class Mitra extends CI_Controller
 	public function alumni()
 	{
 		$data['judul'] = 'Data alumni';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->alumni_m->get_all_alumni();
 		$data['lapor'] = false;
 
@@ -486,7 +488,7 @@ class Mitra extends CI_Controller
 		$cari_tahun_lulus =  $this->input->post('tahun_lulus');
 
 		$data['judul'] = 'Data alumni';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->alumni_m->get_all_alumni_tahun_lulus($cari_tahun_lulus);
 		$data['lapor'] = false;
 
@@ -497,7 +499,7 @@ class Mitra extends CI_Controller
 	public function cetak_alumni()
 	{
 		$data['judul'] = 'Data alumni';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->alumni_m->get_all_alumni();
 
 		// $this->load->view('template_mitra/header', $data);
@@ -508,7 +510,7 @@ class Mitra extends CI_Controller
 
 	public function tambah_alumni_baru()
 	{
-		$this->form_validation->set_rules('nama_alumni', 'Nama Lengkap', 'required|is_unique[alumni.email]');
+		$this->form_validation->set_rules('nama_mitra', 'Nama Lengkap', 'required|is_unique[alumni.email]');
 		$this->form_validation->set_rules('jurusan_smk', 'Jurusan', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
 		$this->form_validation->set_rules('pendidikan_t', 'Pendidikan terakhir', 'required');
@@ -518,7 +520,7 @@ class Mitra extends CI_Controller
 		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[alumni.email]');
 		if ($this->form_validation->run() == FALSE) {
 			$data['judul'] = 'Data alumni';
-			$data['nama'] = $this->session->userdata('nama_alumni');
+			$data['nama'] = $this->session->userdata('nama_mitra');
 			$data['jurusan'] = $this->jurusan_m->get_all_jurusan();
 
 			$this->load->view('template_mitra/header', $data);
@@ -539,7 +541,7 @@ class Mitra extends CI_Controller
 			$x = $this->upload->data();
 
 			$data = array(
-				'nama_alumni' => $this->input->post('nama_alumni'),
+				'nama_mitra' => $this->input->post('nama_mitra'),
 				'jurusan_smk' => $this->input->post('jurusan_smk'),
 				'agama' => $this->input->post('agama'),
 				'pendidikan_t' => $this->input->post('pendidikan_t'),
@@ -565,7 +567,7 @@ class Mitra extends CI_Controller
 	}
 	public function edit_alumni_baru($id_alumni)
 	{
-		$this->form_validation->set_rules('nama_alumni', 'Nama Lengkap', 'required|is_unique[alumni.email]');
+		$this->form_validation->set_rules('nama_mitra', 'Nama Lengkap', 'required|is_unique[alumni.email]');
 		$this->form_validation->set_rules('jurusan_smk', 'Jurusan', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
 		$this->form_validation->set_rules('pendidikan_t', 'Pendidikan terakhir', 'required');
@@ -575,7 +577,7 @@ class Mitra extends CI_Controller
 		// $this->form_validation->set_rules('email', 'Email', 'required|is_unique[alumni.email]');
 		if ($this->form_validation->run() == FALSE) {
 			$data['judul'] = 'Data alumni';
-			$data['nama'] = $this->session->userdata('nama_alumni');
+			$data['nama'] = $this->session->userdata('nama_mitra');
 			$data['jurusan'] = $this->jurusan_m->get_all_jurusan();
 			$data['lapor'] = "gagal";
 			$this->load->view('template_mitra/header', $data);
@@ -596,7 +598,7 @@ class Mitra extends CI_Controller
 			$x = $this->upload->data();
 
 			$data = array(
-				'nama_alumni' => $this->input->post('nama_alumni'),
+				'nama_mitra' => $this->input->post('nama_mitra'),
 				'jurusan_smk' => $this->input->post('jurusan_smk'),
 				'agama' => $this->input->post('agama'),
 				'pendidikan_t' => $this->input->post('pendidikan_t'),
@@ -619,7 +621,7 @@ class Mitra extends CI_Controller
 	public function view_alumni($telpon)
 	{
 		$data['judul'] = 'Dashboard Alumni';
-		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['nama'] = $this->session->userdata('nama_mitra');
 		$data['data'] = $this->alumni_m->get_row_alumni($telpon);
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/alumni/view_alumni', $data);
