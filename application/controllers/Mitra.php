@@ -221,24 +221,24 @@ class Mitra extends CI_Controller
 			// script upload file 1
 			$this->upload->do_upload('foto_low');
 			$x = $this->upload->data();
-			var_dump($x["orig_name"]);
-			// $data = array(
-			// 	'nama_lowongan' => $this->input->post('nama_lowongan'),
-			// 	'mitra' => $this->session->userdata('id_mitra'),
-			// 	'batas_tanggal' => $this->input->post('batas_tanggal'),
-			// 	'isi_lowongan' => $this->input->post('isi_lowongan'),
-			// 	'pml' => $this->input->post('pml'),
-			// 	'pmp' => $this->input->post('pmp'),
-			// 	'uml' => $this->input->post('uml'),
-			// 	'ump' => $this->input->post('ump'),
-			// 	'jlp' => $this->input->post('jlp'),
-			// 	'jll' => $this->input->post('jll'),
-			// 	'date_mulai' => $this->input->post('date_mulai'),
-			// 	'foto' => $x["orig_name"],
-			// );
+			// var_dump($x["orig_name"]);
+			$data = array(
+				'nama_lowongan' => $this->input->post('nama_lowongan'),
+				'mitra' => $this->session->userdata('id_mitra'),
+				'batas_tanggal' => $this->input->post('batas_tanggal'),
+				'isi_lowongan' => $this->input->post('isi_lowongan'),
+				'pml' => $this->input->post('pml'),
+				'pmp' => $this->input->post('pmp'),
+				'uml' => $this->input->post('uml'),
+				'ump' => $this->input->post('ump'),
+				'jlp' => $this->input->post('jlp'),
+				'jll' => $this->input->post('jll'),
+				'date_mulai' => $this->input->post('date_mulai'),
+				'foto' => $x["orig_name"],
+			);
 
-			// $this->db->insert('lowongan', $data);
-			// return redirect('mitra/data_lowongan');
+			$this->db->insert('lowongan', $data);
+			return redirect('mitra/data_lowongan');
 		}
 	}
 	public function proses_update_lowongan($id_lowongan)
@@ -397,8 +397,9 @@ class Mitra extends CI_Controller
 	}
 	public function pengajuan_kerja()
 	{
+		$id_mitra = $this->session->userdata('id_mitra');
 		$data['judul'] = 'Data Lowongan';
-		$data['data'] = $this->alumni_m->get_pengajuan();
+		$data['data'] = $this->alumni_m->get_pengajuan($id_mitra);
 		$data['nama'] = $this->session->userdata('nama_mitra');
 		$this->load->view('template_mitra/header', $data);
 		$this->load->view('admin/lowongan/pengajuan_kerja', $data);
@@ -638,14 +639,36 @@ class Mitra extends CI_Controller
 		redirect("admin/pengajuan_kerja");
 	}
 
-	public function terima($id_lamaran)
+	public function terima($id_lamaran, $telpon_alumni, $nama)
 	{
+		$userkey = 'f70595dcb94f';
+		$passkey = 'da5d1066b8f2e8343646fb16';
+		$telepon = $telpon_alumni;
+		$message = 'Permohonan atas nama ' . $nama . "telah memenuhi syarat";
+		$url = 'https://console.zenziva.net/wareguler/api/sendWA/';
+		$curlHandle = curl_init();
+		curl_setopt($curlHandle, CURLOPT_URL, $url);
+		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+		curl_setopt($curlHandle, CURLOPT_POST, 1);
+		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+			'userkey' => $userkey,
+			'passkey' => $passkey,
+			'to' => $telepon,
+			'message' => $message
+		));
+		$results = json_decode(curl_exec($curlHandle), true);
+		curl_close($curlHandle);
+
 		$data = array(
 			'status_lamaran' => '3'
 		);
 		$this->db->where('id_lamaran', $id_lamaran);
 		$this->db->update('lamaran', $data);
-		redirect("admin/pengajuan_kerja");
+		redirect("mitra/pengajuan_kerja");
 	}
 }
 

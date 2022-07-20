@@ -82,26 +82,27 @@ class Alumni_m extends CI_Model
 	public function get_status($id_alumni)
 	{
 
-		// $this->db->select('*');
-		// $this->db->from('lamaran');
+		$this->db->select('*');
+		$this->db->from('lamaran');
 
-		// // $this->db->join('alumni', 'alumni.id_alumni = lamaran.id_alumni');
 		// $this->db->join('lamaran', 'lamaran.id_lowongan = lamaran.id_lowongan');
 		$this->db->join('lowongan', 'lowongan.id_lowongan = lamaran.id_lowongan');
+		$this->db->join('mitra', 'mitra.id_mitra = lowongan.mitra');
 		// // $this->db->join('akun', 'akun.telpon = alumni.telpon');
 		// // $this->db->join('jurusan', 'jurusan.id_jurusan = alumni.jurusan_smk');
 		// $this->db->order_by('lowongan.id_lowongan', 'DESC');
 		$this->db->where('id_alumni', $id_alumni);
-		return $this->db->get('lamaran')->result();
+		return $this->db->get()->result();
 	}
-	public function get_pengajuan()
+	public function get_pengajuan($id_mitra)
 	{
 		$this->db->select('*');
 		$this->db->from('lamaran');
 		$this->db->join('alumni', 'alumni.id_alumni = lamaran.id_alumni');
 		$this->db->join('lowongan', 'lowongan.id_lowongan = lamaran.id_lowongan');
-
+		$this->db->join('mitra', 'mitra.id_mitra = lowongan.mitra');
 		$this->db->where('lamaran.status_lamaran', "1");
+		$this->db->where('lowongan.mitra', $id_mitra);
 		$this->db->order_by('lowongan.id_lowongan', 'DESC');
 		return $this->db->get()->result();
 	}

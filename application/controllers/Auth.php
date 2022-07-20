@@ -56,10 +56,23 @@ class Auth extends CI_Controller
 			$cek = $this->auth_m->login($telpon, $password);
 			if ($cek == true) {
 				foreach ($cek as $row);
+				function hitung_umur($tanggal_lahir)
+				{
+					list($year, $month, $day) = explode("-", $tanggal_lahir);
+					$year_diff  = date("Y") - $year;
+					$month_diff = date("m") - $month;
+					$day_diff   = date("d") - $day;
+					if ($month_diff < 0) $year_diff--;
+					elseif (($month_diff == 0) && ($day_diff < 0)) $year_diff--;
+					return $year_diff;
+				}
+
 				$this->session->set_userdata('telpon', $row->telpon);
 				$this->session->set_userdata('nama_alumni', $row->nama_alumni);
 				$this->session->set_userdata('id_alumni', $row->id_alumni);
 				$this->session->set_userdata('level', $row->level);
+				$this->session->set_userdata('umur', hitung_umur($row->tgl_lahir));
+				$this->session->set_userdata('jk', $row->jk);
 				if ($row->level == "admin") {
 					redirect('admin');
 				} elseif ($row->level == "user") {
@@ -199,6 +212,7 @@ class Auth extends CI_Controller
 				'agama' => $this->input->post('agama'),
 				'pendidikan_t' => $this->input->post('pendidikan_t'),
 				'tgl_lahir' => $this->input->post('tgl_lahir'),
+				'jk' => $this->input->post('jk'),
 				'alamat' => $this->input->post('alamat'),
 				'telpon' => $this->input->post('telpon'),
 				'foto_profil' => $x["orig_name"],

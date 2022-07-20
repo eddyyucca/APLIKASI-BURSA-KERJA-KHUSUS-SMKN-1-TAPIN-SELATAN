@@ -1,9 +1,10 @@
-<div class="container col-12">
+<div class="container col-8">
 	<!-- Page Heading -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold ">Tabel Lowongan</h6>
+			<h6 class="m-0 font-weight-bold "><?= $data->nama_mitra ?></h6>
 		</div>
+
 		<div class="card-body">
 			<div class="table-responsive">
 				<table>
