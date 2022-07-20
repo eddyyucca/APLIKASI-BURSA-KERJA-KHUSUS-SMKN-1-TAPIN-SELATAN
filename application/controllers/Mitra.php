@@ -221,7 +221,12 @@ class Mitra extends CI_Controller
 			// script upload file 1
 			$this->upload->do_upload('foto_low');
 			$x = $this->upload->data();
-			// var_dump($x["orig_name"]);
+
+			if ($this->input->post('jll') == true) {
+				$gd = 1;
+			} elseif ($this->input->post('jlp') == true) {
+				$gd = 2;
+			}
 			$data = array(
 				'nama_lowongan' => $this->input->post('nama_lowongan'),
 				'mitra' => $this->session->userdata('id_mitra'),
@@ -234,7 +239,7 @@ class Mitra extends CI_Controller
 				'jlp' => $this->input->post('jlp'),
 				'jll' => $this->input->post('jll'),
 				'date_mulai' => $this->input->post('date_mulai'),
-				'foto' => $x["orig_name"],
+				'gd' => $gd,
 			);
 
 			$this->db->insert('lowongan', $data);

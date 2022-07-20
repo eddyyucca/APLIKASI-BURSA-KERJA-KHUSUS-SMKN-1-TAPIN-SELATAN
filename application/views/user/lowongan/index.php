@@ -26,9 +26,7 @@
 						<?php
 						$nomor = 1;
 						foreach ($data as $x) {
-							if ($jk) {
-								# code...
-							}
+
 							if ($umur  <= $x->uml) {
 
 						?>

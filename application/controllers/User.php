@@ -350,9 +350,23 @@ class User extends CI_Controller
 	public function data_lowongan()
 	{
 		$data['umur'] = $this->session->userdata('umur');
+		$jk = $this->session->userdata('jk');
 		$data['jk'] = $this->session->userdata('jk');
 		$data['judul'] = 'Data Lowongan';
 		$data['data'] = $this->lowongan_m->get_all_lowongan();
+		$data['nama'] = $this->session->userdata('nama_alumni');
+		$data['notif'] = false;
+		$this->load->view('template_user/header', $data);
+		$this->load->view('user/lowongan/index', $data);
+		$this->load->view('template_user/footer');
+	}
+	public function data_lowongan_gd()
+	{
+		$data['umur'] = $this->session->userdata('umur');
+		$jk = $this->session->userdata('jk');
+		$data['jk'] = $this->session->userdata('jk');
+		$data['judul'] = 'Data Lowongan';
+		$data['data'] = $this->lowongan_m->get_all_lowongan_gd($jk);
 		$data['nama'] = $this->session->userdata('nama_alumni');
 		$data['notif'] = false;
 		$this->load->view('template_user/header', $data);
