@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 20, 2022 at 04:09 AM
+-- Generation Time: Jul 22, 2022 at 09:45 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -134,16 +134,17 @@ CREATE TABLE `lowongan` (
   `jll` varchar(255) NOT NULL,
   `uml` varchar(255) NOT NULL,
   `ump` varchar(255) NOT NULL,
-  `date_mulai` varchar(255) NOT NULL
+  `date_mulai` varchar(255) NOT NULL,
+  `gd` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lowongan`
 --
 
-INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `isi_lowongan`, `batas_tanggal`, `mitra`, `foto`, `pml`, `pmp`, `jlp`, `jll`, `uml`, `ump`, `date_mulai`) VALUES
-(15, 'tes', 'saas', '2022-07-31', '3', '', '23', '23', '1', '1', '27', '12', '2022-07-18'),
-(18, 'admin logistik', 'sasa', '2022-07-31', '3', '', 's1', 's1', '1', '1', '25', '23', '2022-07-19');
+INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `isi_lowongan`, `batas_tanggal`, `mitra`, `foto`, `pml`, `pmp`, `jlp`, `jll`, `uml`, `ump`, `date_mulai`, `gd`) VALUES
+(15, 'tes', 'saas', '2022-07-31', '3', '', '23', '23', '1', '1', '27', '12', '2022-07-18', '2'),
+(18, 'admin logistik', 'sasa', '2022-07-31', '3', '', 's1', 's1', '1', '1', '25', '23', '2022-07-19', '1');
 
 -- --------------------------------------------------------
 
