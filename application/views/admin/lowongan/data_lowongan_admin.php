@@ -6,7 +6,7 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<a href="<?= base_url('mitra/cetak_lowongan_aktif') ?>" class="btn btn-primary">Cetak Lowngan Aktif</a>
+				<a href="<?= base_url('admin/cetak_lowongan_aktif') ?>" class="btn btn-primary">Cetak Lowngan Aktif</a>
 				<hr>
 				<form action="<?= base_url('mitra/cetak_lowongan_aktif_bulan') ?>" method="post">
 					<div class="input-group mb-3 col-6">

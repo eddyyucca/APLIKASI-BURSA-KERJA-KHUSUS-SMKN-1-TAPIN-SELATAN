@@ -6,8 +6,8 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<a href="<?= base_url('admin/buat_lowongan_baru') ?>" class="btn btn-primary">Buat Lowngan Baru</a>
-				<a href="<?= base_url('admin/cetak_lowongan_lama') ?>" class="btn btn-primary">Cetak Lowongan Lama</a>
+				<a href="<?= base_url('mitra/buat_lowongan_baru') ?>" class="btn btn-primary">Buat Lowngan Baru</a>
+				<a href="<?= base_url('mitra/cetak_lowongan_lama') ?>" class="btn btn-primary">Cetak Lowongan Lama</a>
 				<hr>
 				<form action="<?= base_url('admin/cetak_lowongan_lama_bulan') ?>" method="post">
 					<div class="input-group mb-3 col-6">
