@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 22, 2022 at 09:45 AM
+-- Generation Time: Jul 28, 2022 at 10:20 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bkk`
+-- Database: `bkk2`
 --
 
 -- --------------------------------------------------------
@@ -40,9 +40,9 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`id_akun`, `telpon`, `password`, `level`, `status`) VALUES
-(23, '081266666666', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif'),
+(23, '081266666666', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'aktif'),
 (29, '444444444', 'e10adc3949ba59abbe56e057f20f883e', 'mitra', 'aktif'),
-(31, '081250653005', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif');
+(31, '081250653005', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -65,16 +65,21 @@ CREATE TABLE `alumni` (
   `tentang_saya` varchar(255) NOT NULL,
   `data_pdf` text NOT NULL,
   `status_akun` varchar(10) NOT NULL,
-  `tahun_lulus` varchar(20) NOT NULL
+  `tahun_lulus` varchar(20) NOT NULL,
+  `bbadan` varchar(20) NOT NULL,
+  `tbadan` varchar(20) NOT NULL,
+  `ciriciri` text NOT NULL,
+  `fb` varchar(20) NOT NULL,
+  `statuskerja` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `alumni`
 --
 
-INSERT INTO `alumni` (`id_alumni`, `nama_alumni`, `jurusan_smk`, `pendidikan_t`, `tgl_lahir`, `jk`, `alamat`, `telpon`, `agama`, `foto_profil`, `email`, `tentang_saya`, `data_pdf`, `status_akun`, `tahun_lulus`) VALUES
-(6, 'ahmad amin badawi', '2', 'SMK', '1997-01-12', '1', 'TAPIN', '081266666666', 'Islam', '5f4df47203808.jpg', 'aminbadawi@gmail.com', '', '', '1', '2020'),
-(13, 'a', '2', 'a', '2022-07-22', '2', 'a', '081250653005', 'Kristen', '', 'a@a.c', '', '', '0', '11111');
+INSERT INTO `alumni` (`id_alumni`, `nama_alumni`, `jurusan_smk`, `pendidikan_t`, `tgl_lahir`, `jk`, `alamat`, `telpon`, `agama`, `foto_profil`, `email`, `tentang_saya`, `data_pdf`, `status_akun`, `tahun_lulus`, `bbadan`, `tbadan`, `ciriciri`, `fb`, `statuskerja`) VALUES
+(6, 'ahmad amin badawi', '2', 'SMK', '1997-01-12', '', 'TAPIN', '081266666666', '', '', 'aminbadawi@gmail.com', 'heheh', '', '1', '2020', '111', '111', 'sasa', 'sasas', 'Bekerja'),
+(13, 'a', '2', 'a', '2022-07-22', '2', 'a', '081250653005', 'Kristen', '', 'a@a.c', '', '', '1', '11111', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -143,7 +148,6 @@ CREATE TABLE `lowongan` (
 --
 
 INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `isi_lowongan`, `batas_tanggal`, `mitra`, `foto`, `pml`, `pmp`, `jlp`, `jll`, `uml`, `ump`, `date_mulai`, `gd`) VALUES
-(15, 'tes', 'saas', '2022-07-31', '3', '', '23', '23', '1', '1', '27', '12', '2022-07-18', '2'),
 (18, 'admin logistik', 'sasa', '2022-07-31', '3', '', 's1', 's1', '1', '1', '25', '23', '2022-07-19', '1');
 
 -- --------------------------------------------------------

@@ -30,7 +30,7 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nama_lowongan; ?></td>
-                                <td><?= $x->nama_perusahaan; ?></td>
+                                <td><?= $x->nama_mitra; ?></td>
                                 <td><?= $x->nama_alumni; ?></td>
 
                             </tr>
