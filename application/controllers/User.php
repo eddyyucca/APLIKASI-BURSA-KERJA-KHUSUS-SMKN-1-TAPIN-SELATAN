@@ -9,6 +9,7 @@ class User extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->model('lowongan_m');
 		$this->load->model('alumni_m');
+		$this->load->model('jurusan_m');
 		// $this->load->model('pegawai_m');
 		// $this->load->model('pengajuan_m');
 		$this->load->library('pagination');
@@ -319,6 +320,18 @@ class User extends CI_Controller
 		$this->load->view('user/atk/keranjang', $data);
 		$this->load->view('template_user/footer');
 	}
+	public function edit_profil()
+	{
+		$data['jurusan'] = $this->jurusan_m->get_all_jurusan();
+		$data['judul'] = 'Profil';
+		$data['keranjang'] = $this->cart->contents();
+		$data['nama'] = $this->session->userdata('nama_alumni');
+		$telpon =  $this->session->userdata('telpon');
+		$data['data'] = $this->alumni_m->get_row_alumni($telpon);
+		$this->load->view('template_user/header', $data);
+		$this->load->view('user/profil/edit_profil', $data);
+		$this->load->view('template_user/footer');
+	}
 
 	public function hapus($rowid)
 	{
@@ -372,6 +385,50 @@ class User extends CI_Controller
 		$this->load->view('template_user/header', $data);
 		$this->load->view('user/lowongan/index', $data);
 		$this->load->view('template_user/footer');
+	}
+
+	public function update_alumni($telpon)
+	{
+		$config['upload_path']   = './assets/foto_profil/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['remove_space'] = TRUE;
+		//$config['max_size']      = 100; 
+		//$config['max_width']     = 1024; 
+		//$config['max_height']    = 768;  
+
+		$this->load->library('upload', $config);
+		// script upload file 1
+		$this->upload->do_upload('foto');
+		$x = $this->upload->data();
+
+		$data = array(
+			'nama_alumni' => $this->input->post('nama_alumni'),
+			'jurusan_smk' => $this->input->post('jurusan_smk'),
+			'agama' => $this->input->post('agama'),
+			'pendidikan_t' => $this->input->post('pendidikan_t'),
+			'tgl_lahir' => $this->input->post('tgl_lahir'),
+			'jk' => $this->input->post('jk'),
+			'alamat' => $this->input->post('alamat'),
+			'telpon' => $this->input->post('telpon'),
+			'foto_profil' => $x["orig_name"],
+			'email' => $this->input->post('email'),
+			'status_akun' => "0",
+			'tahun_lulus' => $this->input->post('tahun_lulus'),
+			'bbadan' => $this->input->post('bbadan'),
+			'tbadan' => $this->input->post('tbadan'),
+			'ciriciri' => $this->input->post('ciriciri'),
+			'fb' => $this->input->post('fb'),
+			'statuskerja' => $this->input->post('statuskerja'),
+		);
+
+		
+		$this->db->where('telpon', $telpon);
+		
+		$this->db->update('alumni', $data);
+
+		redirect('user');
+		
+		
 	}
 }   
 

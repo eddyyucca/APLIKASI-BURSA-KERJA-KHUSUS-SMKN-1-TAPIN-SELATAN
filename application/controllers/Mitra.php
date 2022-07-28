@@ -166,7 +166,7 @@ class Mitra extends CI_Controller
 	{
 		$this->db->where('id_lowongan', $id_lowongan);
 		$this->db->delete('lowongan');
-		return redirect('admin/data_lowongan');
+		return redirect('mitra/data_lowongan');
 	}
 
 	// jurusan end

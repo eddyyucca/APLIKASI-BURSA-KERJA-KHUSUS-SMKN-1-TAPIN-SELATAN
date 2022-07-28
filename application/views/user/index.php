@@ -67,6 +67,22 @@
 								<td> Tahun Lulus SMK</td>
 								<td>: <?= $data->tahun_lulus ?> </td>
 							</tr>
+							<tr>
+								<td> Berat Badan</td>
+								<td>: <?= $data->bbadan ?> </td>
+							</tr>
+							<tr>
+								<td> Tinggi Badan</td>
+								<td>: <?= $data->tbadan ?> </td>
+							</tr>
+							<tr>
+								<td> Ciri-ciri Badan</td>
+								<td>: <?= $data->ciriciri ?> </td>
+							</tr>
+							<tr>
+								<td> Status Kerja</td>
+								<td>: <?= $data->statuskerja ?> </td>
+							</tr>
 						</table>
 						<hr>
 						<!-- tentang saya -->

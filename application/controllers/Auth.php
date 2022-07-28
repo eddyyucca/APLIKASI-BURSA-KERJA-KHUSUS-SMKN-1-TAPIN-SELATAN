@@ -54,6 +54,8 @@ class Auth extends CI_Controller
 			$telpon = $this->input->post('telpon');
 			$password =  md5($this->input->post('password'));
 			$cek = $this->auth_m->login($telpon, $password);
+
+
 			if ($cek == true) {
 				foreach ($cek as $row);
 				function hitung_umur($tanggal_lahir)
@@ -219,6 +221,11 @@ class Auth extends CI_Controller
 				'email' => $this->input->post('email'),
 				'status_akun' => "0",
 				'tahun_lulus' => $this->input->post('tahun_lulus'),
+				'bbadan' => $this->input->post('bbadan'),
+				'tbadan' => $this->input->post('tbadan'),
+				'ciriciri' => $this->input->post('ciriciri'),
+				'fb' => $this->input->post('fb'),
+				'statuskerja' => $this->input->post('statuskerja'),
 			);
 			$akun = array(
 				'telpon' => $this->input->post('telpon'),

@@ -327,7 +327,7 @@ class Admin extends CI_Controller
 		$data['data'] = $this->lowongan_m->get_all_lowongan();
 		$data['nama'] = $this->session->userdata('nama_alumni');
 		$this->load->view('template/header', $data);
-		$this->load->view('admin/lowongan/data_lowongan', $data);
+		$this->load->view('admin/lowongan/data_lowongan_admin', $data);
 		$this->load->view('template/footer');
 	}
 	public function cetak_lowongan_aktif()
@@ -357,7 +357,7 @@ class Admin extends CI_Controller
 		$data['data'] = $this->lowongan_m->get_all_lowongan();
 		$data['nama'] = $this->session->userdata('nama_alumni');
 		$this->load->view('template/header', $data);
-		$this->load->view('admin/lowongan/lowongan_lama', $data);
+		$this->load->view('admin/lowongan/lowongan_lama_admin', $data);
 		$this->load->view('template/footer');
 	}
 	public function cetak_lowongan_lama()
