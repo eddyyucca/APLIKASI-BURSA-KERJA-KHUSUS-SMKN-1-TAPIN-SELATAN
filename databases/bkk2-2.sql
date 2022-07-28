@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 28, 2022 at 10:20 AM
+-- Generation Time: Jul 28, 2022 at 10:48 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -80,6 +80,25 @@ CREATE TABLE `alumni` (
 INSERT INTO `alumni` (`id_alumni`, `nama_alumni`, `jurusan_smk`, `pendidikan_t`, `tgl_lahir`, `jk`, `alamat`, `telpon`, `agama`, `foto_profil`, `email`, `tentang_saya`, `data_pdf`, `status_akun`, `tahun_lulus`, `bbadan`, `tbadan`, `ciriciri`, `fb`, `statuskerja`) VALUES
 (6, 'ahmad amin badawi', '2', 'SMK', '1997-01-12', '', 'TAPIN', '081266666666', '', '', 'aminbadawi@gmail.com', 'heheh', '', '1', '2020', '111', '111', 'sasa', 'sasas', 'Bekerja'),
 (13, 'a', '2', 'a', '2022-07-22', '2', 'a', '081250653005', 'Kristen', '', 'a@a.c', '', '', '1', '11111', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `id_event` int(11) NOT NULL,
+  `nama_event` varchar(255) NOT NULL,
+  `tanggal_event` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id_event`, `nama_event`, `tanggal_event`) VALUES
+(1, 'sasas', '2022-07-31');
 
 -- --------------------------------------------------------
 
@@ -189,6 +208,12 @@ ALTER TABLE `alumni`
   ADD PRIMARY KEY (`id_alumni`);
 
 --
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id_event`);
+
+--
 -- Indexes for table `jurusan`
 --
 ALTER TABLE `jurusan`
@@ -227,6 +252,12 @@ ALTER TABLE `akun`
 --
 ALTER TABLE `alumni`
   MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `jurusan`

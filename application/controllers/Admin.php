@@ -330,6 +330,35 @@ class Admin extends CI_Controller
 		$this->load->view('admin/lowongan/data_lowongan_admin', $data);
 		$this->load->view('template/footer');
 	}
+	public function event()
+	{
+		$data['judul'] = 'Data Event';
+		$data['data'] = $this->lowongan_m->get_all_event();
+		$data['nama'] = $this->session->userdata('nama_alumni');
+		$this->load->view('template/header', $data);
+		$this->load->view('admin/event/data_event', $data);
+		$this->load->view('template/footer');
+	}
+	public function tambah_event_baru()
+	{
+		$data['judul'] = 'Buat Event';
+		$data['data'] = $this->lowongan_m->get_all_event();
+		$data['nama'] = $this->session->userdata('nama_alumni');
+		$this->load->view('template/header', $data);
+		$this->load->view('admin/event/input_event', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function proses_input_event()
+	{
+		$data = array(
+			'nama_event' => $this->input->post('nama_event'),
+			'tanggal_event' => $this->input->post('tanggal_event'),
+		);
+
+		$this->db->insert('event', $data);
+		redirect('admin/event');
+	}
 	public function cetak_lowongan_aktif()
 	{
 		$data['judul'] = 'Data Lowongan';

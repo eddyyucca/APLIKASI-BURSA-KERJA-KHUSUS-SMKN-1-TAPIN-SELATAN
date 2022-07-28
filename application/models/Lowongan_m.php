@@ -17,6 +17,19 @@ class Lowongan_m extends CI_Model
 		$this->db->order_by('id_lowongan', 'DESC');
 		return  $this->db->get()->result();
 	}
+	public function get_all_event()
+	{
+		$date = ('Y-m-d');
+		$date2 = '2022-02-01';
+		$this->db->select('*');
+		$this->db->from('event');
+		// $this->db->join('mitra', 'mitra.id_mitra = lowongan.mitra');
+		// $this->db->where('batas_tanggal >=', $date);
+		// $this->db->where('batas_tanggal <=', $date2);
+
+		$this->db->order_by('id_event', 'DESC');
+		return  $this->db->get()->result();
+	}
 	public function get_all_lowongan_gd($jk)
 	{
 		$date = ('Y-m-d');

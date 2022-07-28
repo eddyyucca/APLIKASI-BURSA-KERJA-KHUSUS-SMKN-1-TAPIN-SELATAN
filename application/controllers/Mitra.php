@@ -27,6 +27,7 @@ class Mitra extends CI_Controller
 		$data['judul'] = 'Dashboard';
 		$data['jumlah_alumni'] = $this->alumni_m->jumlah_alumni();
 		$data['jumlah_lowongan'] = $this->alumni_m->jumlah_lowongan();
+		$data['data_event'] = $this->lowongan_m->get_all_event();
 		// $data['jml_alumni'] = $this->pegawai_m->jumlah_pegawai();
 		// $data['jml_jurusan'] = $this->pegawai_m->jumlah_jurusan();
 		// $data['jml_absen'] = $this->pegawai_m->jumlah_absen();
@@ -46,7 +47,7 @@ class Mitra extends CI_Controller
 		// $data['bulan12'] = $this->pegawai_m->jumlah_absen_bulan("12");
 
 		$this->load->view('template_mitra/header', $data);
-		$this->load->view('admin/index', $data);
+		$this->load->view('mitra/index', $data);
 		$this->load->view('template_mitra/footer', $data);
 	}
 

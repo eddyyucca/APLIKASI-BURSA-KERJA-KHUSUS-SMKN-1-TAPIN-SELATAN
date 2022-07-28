@@ -83,6 +83,17 @@
 						</div>
 					</div>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#even" aria-expanded="true" aria-controls="even">
+						<i class="fas fa-database"></i>
+						<span>Event</span>
+					</a>
+					<div id="even" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+						<div class="bg-white py-2 collapse-inner rounded">
+							<a class="collapse-item" href="<?= base_url('admin/event') ?>">Buat Event</a>
+						</div>
+					</div>
+				</li>
 				<!-- Divider -->
 				<hr class="sidebar-divider d-none d-md-block">
 
