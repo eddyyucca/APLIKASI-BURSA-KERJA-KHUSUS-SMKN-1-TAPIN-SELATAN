@@ -154,6 +154,12 @@ class Admin extends CI_Controller
 		$this->db->delete('jurusan');
 		return redirect('admin/jurusan');
 	}
+	public function hapus_event($id_event)
+	{
+		$this->db->where('id_event', $id_event);
+		$this->db->delete('event');
+		return redirect('admin/event');
+	}
 	public function delete_alumni($telpon)
 	{
 		$this->db->where('telpon', $telpon);
@@ -349,14 +355,48 @@ class Admin extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
+	public function model_event($id_event)
+	{
+
+		$this->db->where('id_event', $id_event);
+		return $this->db->get('event')->row();
+	}
+	public function edit_event($id_event)
+	{
+		$data['data'] = $this->model_event($id_event);
+		$data['judul'] = 'Buat Event';
+		// $data['data'] = $this->lowongan_m->get_all_event();
+		$data['nama'] = $this->session->userdata('nama_alumni');
+		$this->load->view('template/header', $data);
+		$this->load->view('admin/event/edit_event', $data);
+		$this->load->view('template/footer');
+	}
+
 	public function proses_input_event()
 	{
 		$data = array(
 			'nama_event' => $this->input->post('nama_event'),
 			'tanggal_event' => $this->input->post('tanggal_event'),
+			'akhir_event' => $this->input->post('akhir_event'),
+			'tempat' => $this->input->post('tempat'),
+			'keterangan_event' => $this->input->post('keterangan_event'),
 		);
 
 		$this->db->insert('event', $data);
+		redirect('admin/event');
+	}
+	public function proses_edit_event($id_event)
+	{
+		$data = array(
+			'nama_event' => $this->input->post('nama_event'),
+			'tanggal_event' => $this->input->post('tanggal_event'),
+			'akhir_event' => $this->input->post('akhir_event'),
+			'tempat' => $this->input->post('tempat'),
+			'keterangan_event' => $this->input->post('keterangan_event'),
+		);
+
+		$this->db->where('id_event', $id_event);
+		$this->db->update('event', $data);
 		redirect('admin/event');
 	}
 	public function cetak_lowongan_aktif()

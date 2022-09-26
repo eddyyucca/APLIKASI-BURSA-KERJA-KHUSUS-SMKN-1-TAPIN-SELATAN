@@ -66,15 +66,17 @@
 					<?php foreach ($data_event as $x) { ?>
 
 
-						<div class="col-xl-3 col-md-6 mb-4">
+						<div class="col-xl-6 col-md-6 mb-4">
 							<div class="card border-left-info shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div class="text-xs font-weight-bold text-info text-uppercase mb-1"><?= $x->nama_event ?></div>
 										</div>
-										<div class="col-auto">
-											<?= $x->tanggal_event ?>
+										<div class="col-6">
+											<?= $x->tanggal_event ?> <br> Sampai <br> <?= $x->akhir_event ?><br>
+											Lokasi : <?= $x->tempat ?> <br>
+											Ket : <?= $x->keterangan_event ?>
 										</div>
 									</div>
 								</div>

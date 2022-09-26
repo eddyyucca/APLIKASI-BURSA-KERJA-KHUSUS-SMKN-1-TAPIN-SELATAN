@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 28, 2022 at 10:48 AM
+-- Generation Time: Aug 04, 2022 at 03:22 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -42,7 +42,7 @@ CREATE TABLE `akun` (
 INSERT INTO `akun` (`id_akun`, `telpon`, `password`, `level`, `status`) VALUES
 (23, '081266666666', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'aktif'),
 (29, '444444444', 'e10adc3949ba59abbe56e057f20f883e', 'mitra', 'aktif'),
-(31, '081250653005', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'aktif');
+(31, '081250653005', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -90,15 +90,19 @@ INSERT INTO `alumni` (`id_alumni`, `nama_alumni`, `jurusan_smk`, `pendidikan_t`,
 CREATE TABLE `event` (
   `id_event` int(11) NOT NULL,
   `nama_event` varchar(255) NOT NULL,
-  `tanggal_event` varchar(20) NOT NULL
+  `tanggal_event` varchar(20) NOT NULL,
+  `akhir_event` varchar(20) NOT NULL,
+  `tempat` varchar(255) NOT NULL,
+  `keterangan_event` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`id_event`, `nama_event`, `tanggal_event`) VALUES
-(1, 'sasas', '2022-07-31');
+INSERT INTO `event` (`id_event`, `nama_event`, `tanggal_event`, `akhir_event`, `tempat`, `keterangan_event`) VALUES
+(1, 'sasas', '2022-07-31', '', '', ''),
+(3, 'sas sasa', '2022-08-05', '2022-08-20', 'sasa', 'sasa saas');
 
 -- --------------------------------------------------------
 
@@ -257,7 +261,7 @@ ALTER TABLE `alumni`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jurusan`

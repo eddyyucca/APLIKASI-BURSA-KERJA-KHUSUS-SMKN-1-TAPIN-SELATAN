@@ -13,11 +13,23 @@
 					<form action="<?= base_url('admin/proses_edit_event/' . $data->id_event)  ?>" method="POST">
 						<div class="form-group">
 							<label for="inputItem">Nama Event</label>
-							<input type="text" class="form-control" id="" value="<?= $data->nama_event ?>" name="nama_jurusan" placeholder="Nama jurusan">
+							<input type="text" class="form-control" id="" value="<?= $data->nama_event ?>" name="nama_event" placeholder="Nama jurusan">
 						</div>
 						<div class="form-group">
 							<label for="inputItem">Tanggal Event</label>
 							<input type="date" class="form-control" id="" value="<?= $data->tanggal_event ?>" name="tanggal_event">
+						</div>
+						<div class="form-group">
+							<label for="inputItem">Akhir Event</label>
+							<input type="date" class="form-control" value="<?= $data->akhir_event ?>" id="nama_event" name="akhir_event">
+						</div>
+						<div class="form-group">
+							<label for="inputItem">Tempat Event</label>
+							<input type="text" class="form-control" id="tempat" value="<?= $data->tempat ?>" name="tempat">
+						</div>
+						<div class="form-group">
+							<label for="inputItem">Keterangan</label>
+							<textarea class="form-control" name="keterangan_event" rows="5"><?= $data->keterangan_event ?> </textarea>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">Simpan</button>

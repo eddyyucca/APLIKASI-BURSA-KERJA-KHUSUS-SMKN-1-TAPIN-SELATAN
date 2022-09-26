@@ -16,6 +16,9 @@
 							<th>No</th>
 							<th>Nama Event</th>
 							<th>Tanggal Acara</th>
+							<th>Akhir Acara</th>
+							<th>Tempat Acara</th>
+							<th>Keterangan Acara</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -27,6 +30,9 @@
 								<td><?= $nomor++; ?></td>
 								<td><?= $x->nama_event ?></td>
 								<td><?= $x->tanggal_event ?></td>
+								<td><?= $x->akhir_event ?></td>
+								<td><?= $x->tempat ?></td>
+								<td><?= $x->keterangan_event ?></td>
 								<td>
 									<a href="<?= base_url('admin/edit_event/') . $x->id_event; ?>" class="btn btn-primary">Edit</a>
 									<a href="<?= base_url('admin/hapus_event/') . $x->id_event; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>

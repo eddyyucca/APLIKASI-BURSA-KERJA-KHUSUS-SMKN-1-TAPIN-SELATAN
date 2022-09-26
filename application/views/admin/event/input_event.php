@@ -20,6 +20,18 @@
 							<input type="date" class="form-control" id="nama_event" name="tanggal_event">
 						</div>
 						<div class="form-group">
+							<label for="inputItem">Akhir Event</label>
+							<input type="date" class="form-control" id="nama_event" name="akhir_event">
+						</div>
+						<div class="form-group">
+							<label for="inputItem">Tempat Event</label>
+							<input type="text" class="form-control" id="tempat" placeholder="Tempat Event" name="tempat">
+						</div>
+						<div class="form-group">
+							<label for="inputItem">Keterangan</label>
+							<textarea class="form-control" name="keterangan_event" rows="5"></textarea>
+						</div>
+						<div class="form-group">
 							<button type="submit" class="btn btn-primary">Simpan</button>
 						</div>
 					</form>

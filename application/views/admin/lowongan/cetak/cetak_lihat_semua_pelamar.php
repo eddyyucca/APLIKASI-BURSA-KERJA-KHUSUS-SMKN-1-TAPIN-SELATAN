@@ -54,6 +54,52 @@ header("Content-Disposition: attachment; filename=Data Pelamar.xls");
 						<?php } ?>
 					</tbody>
 				</table>
+				<table style="float:right" border="0">
+					<?php
+					function tanggal_indo($tanggal, $cetak_hari = false)
+					{
+						$hari = array(
+							1 =>    'Senin',
+							'Selasa',
+							'Rabu',
+							'Kamis',
+							'Jumat',
+							'Sabtu',
+							'Minggu'
+						);
+
+						$bulan = array(
+							1 =>   'Januari',
+							'Februari',
+							'Maret',
+							'April',
+							'Mei',
+							'Juni',
+							'Juli',
+							'Agustus',
+							'September',
+							'Oktober',
+							'November',
+							'Desember'
+						);
+						$split 	  = explode('-', $tanggal);
+						$tgl_indo = $split[2] . ' ' . $bulan[(int)$split[1]] . ' ' . $split[0];
+
+						if ($cetak_hari) {
+							$num = date('N', strtotime($tanggal));
+							return $hari[$num] . ', ' . $tgl_indo;
+						}
+						return $tgl_indo;
+					}
+					?>
+					<tr align="right">
+						<br><br>
+						<td align="right" colspan="11">Tapin Selatan, <?= tanggal_indo(date('Y-m-d')) ?> <br>
+							<img src=" <?= base_url('assets/ttd.png') ?>" width="60%"><br>
+							Rahman Ajie Tetuko, S.Pd
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
